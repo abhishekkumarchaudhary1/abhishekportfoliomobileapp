@@ -71,14 +71,24 @@ export const PortfolioScreen: React.FC = () => {
                                 </View>
                             ))}
                         </View>
-                        {project.link && project.link !== '#' && (
-                            <TouchableOpacity
-                                style={styles.goLiveButton}
-                                onPress={() => Linking.openURL(project.link!)}
-                            >
-                                <Text style={styles.goLiveText}>Go Live 🚀</Text>
-                            </TouchableOpacity>
-                        )}
+                        <View style={styles.buttonsContainer}>
+                            {project.link && project.link !== '#' && (
+                                <TouchableOpacity
+                                    style={styles.actionButton}
+                                    onPress={() => Linking.openURL(project.link!)}
+                                >
+                                    <Text style={styles.actionButtonText}>Go Live 🚀</Text>
+                                </TouchableOpacity>
+                            )}
+                            {project.sourceCode && (
+                                <TouchableOpacity
+                                    style={[styles.actionButton, styles.sourceCodeButton]}
+                                    onPress={() => Linking.openURL(project.sourceCode!)}
+                                >
+                                    <Text style={[styles.actionButtonText, styles.sourceCodeText]}>Source Code 💻</Text>
+                                </TouchableOpacity>
+                            )}
+                        </View>
                     </Card>
                 ))}
 
@@ -210,20 +220,31 @@ const styles = StyleSheet.create({
     bottomPadding: {
         height: spacing.lg,
     },
-    goLiveButton: {
+    buttonsContainer: {
+        flexDirection: 'row',
+        gap: spacing.md,
         marginTop: spacing.md,
+        flexWrap: 'wrap',
+    },
+    actionButton: {
         backgroundColor: colors.gray100,
         paddingVertical: spacing.sm,
         paddingHorizontal: spacing.md,
         borderRadius: 8,
         alignItems: 'center',
-        alignSelf: 'flex-start',
         borderWidth: 1,
         borderColor: colors.gray300,
     },
-    goLiveText: {
+    actionButtonText: {
         color: colors.blue,
         fontWeight: typography.weights.semibold,
         fontSize: typography.sizes.sm,
+    },
+    sourceCodeButton: {
+        backgroundColor: colors.blue,
+        borderColor: colors.blue,
+    },
+    sourceCodeText: {
+        color: colors.white,
     },
 });

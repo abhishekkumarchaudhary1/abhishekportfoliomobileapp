@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Alert, TouchableOpacity, Modal, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Header, Card, InputField, Button, SkillsManager, ExperienceForm, EducationForm, ProjectForm } from '../components';
 import { colors, typography, spacing } from '../theme';
@@ -12,6 +12,8 @@ export const ResumeBuilderScreen: React.FC = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [customResume, setCustomResume] = useState<ResumeData>(defaultResume);
   const [isExporting, setIsExporting] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [passcode, setPasscode] = useState('');
 
   const handleToggleMode = () => {
     setIsEditMode(!isEditMode);
@@ -116,7 +118,8 @@ export const ResumeBuilderScreen: React.FC = () => {
     });
   };
 
-  const generateResumeHTML = (resume: ResumeData) => {
+  const generateResumeHTML = (resume: ResumeData, showWatermark: boolean = true) => {
+    // ... (rest of the HTML generation)
     return `
       <!DOCTYPE html>
       <html>
@@ -128,18 +131,19 @@ export const ResumeBuilderScreen: React.FC = () => {
               size: letter;
               margin: 0;
             }
-            * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-            }
             body {
               font-family: 'Calibri', 'Arial', sans-serif;
               font-size: 9pt;
               line-height: 1.3;
               color: #000000;
-              padding: 0.35in 0.5in;
+              padding: 0.35in 0.5in 0.6in 0.5in;
               max-width: 8.5in;
+            }
+            /* ... existing styles ... */
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
             }
             h1 {
               font-size: 18pt;
@@ -258,6 +262,19 @@ export const ResumeBuilderScreen: React.FC = () => {
             .skill::after {
               content: '';
             }
+            .watermark {
+              position: fixed;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              text-align: center;
+              font-size: 9pt;
+              color: #666666;
+              font-style: italic;
+              padding-top: 10pt;
+              padding-bottom: 10pt;
+              background-color: white;
+            }
             .skill:last-child::after {
               content: '';
             }
@@ -326,17 +343,20 @@ export const ResumeBuilderScreen: React.FC = () => {
           <div class="skills-container">
             ${resume.skills.map(skill => `<span class="skill">${skill}</span>`).join('')}
           </div>
+          
+          <!-- Watermark -->
+          ${showWatermark ? '<div class="watermark">Created using Abhishek\'s Resume Builder</div>' : ''}
         </body>
       </html>
     `;
   };
 
-  const handleExportPDF = async () => {
+  const performExport = async (showWatermark: boolean) => {
     try {
       setIsExporting(true);
 
-      // Generate HTML for the resume
-      const html = generateResumeHTML(isEditMode ? customResume : defaultResume);
+      // Generate HTML with or without watermark
+      const html = generateResumeHTML(isEditMode ? customResume : defaultResume, showWatermark);
 
       // Create PDF
       const { uri } = await Print.printToFileAsync({
@@ -349,7 +369,7 @@ export const ResumeBuilderScreen: React.FC = () => {
         await Sharing.shareAsync(uri, {
           UTI: '.pdf',
           mimeType: 'application/pdf',
-          dialogTitle: 'Save or Share Resume'
+          dialogTitle: showWatermark ? 'Save Resume (Watermarked)' : 'Save Resume (Clean)'
         });
       } else {
         Alert.alert(
@@ -364,6 +384,35 @@ export const ResumeBuilderScreen: React.FC = () => {
       console.error('PDF Export Error:', error);
     } finally {
       setIsExporting(false);
+      setModalVisible(false); // Close modal when done
+      setPasscode(''); // Reset passcode
+    }
+  };
+
+  const handleExportPDF = async () => {
+    Alert.alert(
+      'Export Options',
+      'Choose how you want to export your resume.',
+      [
+        {
+          text: 'Remove Watermark',
+          onPress: () => setModalVisible(true),
+          style: 'default',
+        },
+        {
+          text: 'Export with Watermark',
+          onPress: () => performExport(true),
+          style: 'cancel',
+        },
+      ]
+    );
+  };
+
+  const handlePasscodeSubmit = () => {
+    if (passcode.trim().toLowerCase() === 'expobuilderabhishek') {
+      performExport(false);
+    } else {
+      Alert.alert('Invalid Passcode', 'The passcode you entered is incorrect.');
     }
   };
 
@@ -420,14 +469,14 @@ export const ResumeBuilderScreen: React.FC = () => {
           </Card>
 
           <Button
-            title="Export as PDF"
-            onPress={handleExportPDF}
+            title="Export Abhishek's Resume PDF"
+            onPress={() => performExport(false)}
             loading={isExporting}
             style={styles.exportButton}
           />
 
           <Button
-            title="Build Custom Resume"
+            title="Customize Your Resume"
             onPress={handleToggleMode}
             variant="outline"
           />
@@ -577,7 +626,7 @@ export const ResumeBuilderScreen: React.FC = () => {
 
         <View style={styles.buttonContainer}>
           <Button
-            title="Export as PDF"
+            title="Finalize and Export PDF"
             onPress={handleExportPDF}
             loading={isExporting}
             style={styles.previewButton}
@@ -596,6 +645,45 @@ export const ResumeBuilderScreen: React.FC = () => {
 
         <View style={styles.bottomPadding} />
       </ScrollView>
+
+      {/* Passcode Modal */}
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalTitle}>Enter Passcode</Text>
+            <Text style={styles.modalText}>Enter the passcode to remove the watermark.</Text>
+
+            <TextInput
+              style={styles.input}
+              onChangeText={setPasscode}
+              value={passcode}
+              placeholder="Passcode"
+              secureTextEntry={true}
+              autoCapitalize="none"
+            />
+
+            <View style={styles.modalButtons}>
+              <TouchableOpacity
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.textStyle}>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, styles.buttonSubmit]}
+                onPress={handlePasscodeSubmit}
+              >
+                <Text style={styles.textStyle}>Submit</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };
@@ -737,5 +825,69 @@ const styles = StyleSheet.create({
   },
   bottomPadding: {
     height: spacing.lg,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    width: '80%',
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    width: '100%',
+    borderRadius: 5,
+    borderColor: '#ccc',
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: 10,
+  },
+  button: {
+    borderRadius: 10,
+    padding: 10,
+    elevation: 2,
+    width: '45%',
+  },
+  buttonClose: {
+    backgroundColor: '#888',
+  },
+  buttonSubmit: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });

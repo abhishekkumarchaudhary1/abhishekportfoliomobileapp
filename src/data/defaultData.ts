@@ -20,6 +20,7 @@ export const defaultPortfolio: PortfolioData = {
         technologies: project.technologies,
         imageUrl: project.image,
         link: project.link,
+        sourceCode: project.sourceCode,
     })),
 
     skills: basicInfo.skills.categories.flatMap(category =>
@@ -46,6 +47,7 @@ export const defaultResume: ResumeData = {
         location: basicInfo.personalInfo.location,
         title: basicInfo.personalInfo.title,
         summary: basicInfo.personalInfo.bio,
+        website: basicInfo.personalInfo.website,
     },
 
     experience: basicInfo.experience.map((exp, index) => ({
