@@ -1,0 +1,340 @@
+{
+  "personalInfo": {
+    "name": "Abhishek Kumar Chaudhary",
+    "title": "Full Stack Developer",
+    "email": "abhishek.chaudhary33@gmail.com",
+    "phone": "+91 9973964367",
+    "location": "Budhanagar Colony, Madhubani, Bihar, India, Pin: 847211",
+    "bio": "Creating elegant solutions to complex problems through code and design. Let's build something amazing together.",
+    "github": "https://github.com/abhishekkumarchaudhary1",
+    "linkedin": "https://www.linkedin.com/in/abhishek-kumar-chaudhary-516431164",
+    "website": "https://www.abhishek-chaudhary.com",
+    "buyMeACoffee": "https://buymeacoffee.com/yourusername",
+    "profileImage": "https://avatars.githubusercontent.com/u/93211705?v=4"
+  },
+  "education": [
+    {
+      "degree": "Master in Computer Applications",
+      "school": "AKTU, Lucknow",
+      "years": "2021-2023"
+    },
+    {
+      "degree": "Bachelor in Computer Applications",
+      "school": "CCS University, Meerut",
+      "years": "2017-2020"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Software Developer",
+      "company": "IISERVZ",
+      "years": "Sept 2024 - Present",
+      "description": "Full-stack development role focusing on web applications and API development using modern technologies.",
+      "responsibilities": [
+        "Developed and maintained responsive web applications using React.js and Next.js, improving user engagement by 40%",
+        "Built company's official website (iiservz.com) from scratch using Next.js, implementing SEO best practices resulting in 60% increase in organic traffic",
+        "Designed and implemented RESTful APIs using .NET 9 and MS SQL Server for HR2Grow attendance system, serving 500+ employees",
+        "Collaborated with cross-functional teams to deliver projects on time and within budget",
+        "Implemented JWT-based authentication and authorization systems ensuring secure data access",
+        "Optimized database queries resulting in 25% improvement in application performance"
+      ],
+      "technologies": [
+        "React",
+        "Next.js",
+        ".NET",
+        "C#",
+        "SQL Server",
+        "MongoDB",
+        "REST API",
+        "JWT",
+        "Cloudinary"
+      ]
+    }
+  ],
+  "skills": {
+    "categories": [
+      {
+        "title": "Frontend Development",
+        "skills": [
+          {
+            "name": "HTML5",
+            "level": 90
+          },
+          {
+            "name": "CSS3/SASS",
+            "level": 85
+          },
+          {
+            "name": "JavaScript (ES6+)",
+            "level": 90
+          },
+          {
+            "name": "React.js",
+            "level": 85
+          },
+          {
+            "name": "Next.js",
+            "level": 80
+          },
+          {
+            "name": "Tailwind CSS",
+            "level": 85
+          },
+          {
+            "name": "Responsive Design",
+            "level": 90
+          }
+        ]
+      },
+      {
+        "title": "Backend Development",
+        "skills": [
+          {
+            "name": "Node.js",
+            "level": 80
+          },
+          {
+            "name": ".NET",
+            "level": 82
+          },
+          {
+            "name": "Express.js",
+            "level": 75
+          },
+          {
+            "name": "RESTful APIs",
+            "level": 85
+          },
+          {
+            "name": "MongoDB",
+            "level": 70
+          },
+          {
+            "name": "SQL",
+            "level": 65
+          },
+          {
+            "name": "Firebase",
+            "level": 75
+          }
+        ]
+      },
+      {
+        "title": "Tools & Technologies",
+        "skills": [
+          {
+            "name": "Git/GitHub",
+            "level": 85
+          },
+          {
+            "name": "Postman",
+            "level": 65
+          },
+          {
+            "name": "VS Code",
+            "level": 90
+          }
+        ]
+      }
+    ],
+    "otherSkills": [
+      "UI/UX Design",
+      "Responsive Design",
+      "Performance Optimization",
+      "Accessibility",
+      "SEO",
+      "Progressive Web Apps",
+      "TypeScript",
+      "Web Animation",
+      "Cross-Browser Compatibility",
+      "Mobile Development",
+      "C#"
+    ]
+  },
+  "projects": [
+    {
+      "id": 1,
+      "title": "Portfolio Mobile App with Resume Builder",
+      "description": "React Native mobile application featuring a portfolio showcase and custom resume builder with PDF export. Users can create, edit, and export professional resumes with customizable sections for experience, education, projects, and skills.",
+      "image": "/portfolio-mobile.png",
+      "technologies": [
+        "React Native",
+        "TypeScript",
+        "Expo",
+        "React Navigation",
+        "expo-print",
+        "expo-sharing"
+      ],
+      "category": "mobile",
+      "link": "#",
+      "sourceCode": "#"
+    },
+    {
+      "id": 2,
+      "title": "Patient Assist",
+      "description": "Medical records management web application for doctors and patients. Features include doctor/patient authentication, diagnostic record management, patient information tracking, and PDF/Excel export capabilities.",
+      "image": "/patient-assist.png",
+      "technologies": [
+        "Next.js",
+        "React",
+        "MongoDB Atlas",
+        "Cloudinary",
+        "JWT",
+        "Tailwind CSS",
+        "jsPDF",
+        "xlsx"
+      ],
+      "category": "fullstack",
+      "link": "https://patient-assist.vercel.app/",
+      "sourceCode": "#"
+    },
+    {
+      "id": 3,
+      "title": "Personal Portfolio Website",
+      "description": "A modern, responsive portfolio website built with Next.js and Tailwind CSS, featuring smooth animations and a contact form with email functionality.",
+      "image": "/portfolio.png",
+      "technologies": [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Nodemailer"
+      ],
+      "category": "frontend",
+      "link": "https://abhishek-chaudhary.com/",
+      "sourceCode": "#"
+    },
+    {
+      "id": 4,
+      "title": "Expense Tracker",
+      "description": "A simple expense tracker app built with React and Tailwind CSS. It allows you to add, edit, and delete expenses, and view the total expenses.",
+      "image": "/expense-tracker.png",
+      "technologies": [
+        "Next.js",
+        "React",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Nodemailer"
+      ],
+      "category": "fullstack",
+      "link": "https://expense-tracker-mu-three-13.vercel.app/",
+      "sourceCode": "#"
+    }
+  ],
+  "roles": [
+    "Frontend Developer",
+    "Backend Developer",
+    "API Tester",
+    "Problem Solver"
+  ],
+  "services": [
+    {
+      "id": 1,
+      "title": "Frontend Development",
+      "description": "Build modern, responsive, and interactive web applications using React, Next.js, and Tailwind CSS.",
+      "price": "15000",
+      "priceType": "project",
+      "originalPrice": "20000",
+      "preRegistrationFee": "150",
+      "features": [
+        "Responsive Design",
+        "Modern UI/UX",
+        "Performance Optimization",
+        "SEO Friendly",
+        "Cross-browser Compatibility",
+        "Mobile First Approach"
+      ],
+      "icon": "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+    },
+    {
+      "id": 2,
+      "title": "Backend Development",
+      "description": "Develop robust APIs and server-side applications using Node.js, .NET, and various databases.",
+      "price": "20000",
+      "priceType": "project",
+      "originalPrice": "25000",
+      "preRegistrationFee": "200",
+      "features": [
+        "RESTful API Development",
+        "Database Design & Integration",
+        "Authentication & Authorization",
+        "API Documentation",
+        "Error Handling & Logging",
+        "Security Best Practices"
+      ],
+      "icon": "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+    },
+    {
+      "id": 3,
+      "title": "Full Stack Development",
+      "description": "Complete web application development from frontend to backend with database integration.",
+      "price": "30000",
+      "priceType": "project",
+      "originalPrice": "40000",
+      "preRegistrationFee": "300",
+      "features": [
+        "Frontend & Backend Development",
+        "Database Integration",
+        "User Authentication",
+        "Payment Gateway Integration",
+        "Deployment & Hosting",
+        "Ongoing Support"
+      ],
+      "icon": "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+    },
+    {
+      "id": 4,
+      "title": "API Development",
+      "description": "Design and develop RESTful APIs with proper documentation and testing.",
+      "price": "12000",
+      "priceType": "project",
+      "originalPrice": "15000",
+      "preRegistrationFee": "120",
+      "features": [
+        "RESTful API Design",
+        "API Documentation",
+        "Error Handling",
+        "Rate Limiting",
+        "API Testing",
+        "Version Control"
+      ],
+      "icon": "M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+    },
+    {
+      "id": 5,
+      "title": "Website Redesign",
+      "description": "Modernize your existing website with improved design, performance, and user experience.",
+      "price": "18000",
+      "priceType": "project",
+      "originalPrice": "22000",
+      "preRegistrationFee": "180",
+      "features": [
+        "UI/UX Redesign",
+        "Performance Optimization",
+        "Mobile Responsiveness",
+        "SEO Improvements",
+        "Content Migration",
+        "Testing & QA"
+      ],
+      "icon": "M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+    },
+    {
+      "id": 6,
+      "title": "Consultation & Support",
+      "description": "Get expert advice on your project, code reviews, and ongoing technical support.",
+      "price": "5000",
+      "priceType": "hour",
+      "originalPrice": "7000",
+      "preRegistrationFee": "50",
+      "features": [
+        "Technical Consultation",
+        "Code Review",
+        "Architecture Planning",
+        "Best Practices Guidance",
+        "Troubleshooting Support",
+        "Flexible Hours"
+      ],
+      "icon": "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+    }
+  ]
+}
